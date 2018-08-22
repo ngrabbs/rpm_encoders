@@ -22,9 +22,9 @@ int main(int argv, char **argc) {
 				rpm = atoi(optarg);
 				break;
 			case '?':
-				return 1;
+				abort();
 			default:
-				return 1;
+				abort();
 			}
 	}
 			
@@ -32,11 +32,10 @@ int main(int argv, char **argc) {
 	printf("at %d rpm our rpm per sec is: %d\n", rpm, rpm/60);
 	printf("number of teeth per second: %d\n", teeth*(rpm/60));
 	printf("number of highs and lows per second: %d\n", teeth*(rpm/60)*2);
-
 	printf("number of milli seconds per tooth: %f\n", (float)(teeth*(rpm/60)*2)/1000);
 	printf("number of micro seconds per tooth; %f\n", (float)(teeth*(rpm/60)*2)/1000000);
 
-	/* how long in micro seconds is a tooth up and down */
+	/* how many revolutions per second */
 	for(i=0; i<(rpm/60); i++) {
 		/* cycle through teeth count */
 		for(tooth_count = 0; tooth_count < teeth; tooth_count++) {
